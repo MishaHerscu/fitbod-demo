@@ -17,7 +17,8 @@ class CsvDb
         end
         new_object.save
       end
-      ActiveRecord::Base.connection.reset_pk_sequence!(model_name.pluralize)
+      # may require another gem
+      # ActiveRecord::Base.connection.reset_pk_sequence!(model_name.pluralize)
     end
   end
 end

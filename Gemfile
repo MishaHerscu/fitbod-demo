@@ -48,9 +48,8 @@ end
 # ActiveAdmin
 gem 'devise'
 gem 'activeadmin'
-
-# an activeadmin skin
 gem 'arctic_admin'
+gem "haml"
 gem 'coffee-rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
