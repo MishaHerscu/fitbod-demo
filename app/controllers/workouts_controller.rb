@@ -1,4 +1,4 @@
-class WorkoutsController < ApplicationController
+class WorkoutsController < ApiController
   before_action :set_workout, only: [:show, :update, :destroy]
 
   # GET /workouts
