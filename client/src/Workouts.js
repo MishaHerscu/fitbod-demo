@@ -44,7 +44,7 @@ class Workouts extends Component {
 
           <Header as='h2' icon textAlign='center' color='teal'>
             <Icon name='unordered list' circular />
-            <Header.Content>Workouts for User </Header.Content>
+            <Header.Content>Workouts for User {this.props.match.params.userId}</Header.Content>
           </Header>
 
           <Divider hidden section />
