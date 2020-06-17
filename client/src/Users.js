@@ -50,7 +50,7 @@ class Users extends Component {
 
           <Container textAlign='center'>
             { users && users.length
-              ? users.map((user, i) => <List.Item key={user.id}><Link to={'/workouts/' + user.id}>{user.email_address}</Link></List.Item>)
+              ? users.map((user, i) => <List.Item key={user.id}><Link to={'/workouts/' + user.id}>{user.email}</Link></List.Item>)
               : 'No users found.'
             }
           </Container>

@@ -3,14 +3,14 @@ ActiveAdmin.register User do
     permitted = :list, :of, :attributes, :on, :model
     if current_admin_user && ['create', 'update', 'destroy'].include?(params[:action])
       permitted << :id
-      permitted << :email_address
+      permitted << :email
     end
     permitted
   end
 
   csv do
     column :id, humanize_name: false
-    column :email_address, humanize_name: false
+    column :email, humanize_name: false
     column :created_at, humanize_name: false
     column :updated_at, humanize_name: false
   end
