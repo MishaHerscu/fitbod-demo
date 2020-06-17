@@ -1,21 +1,23 @@
-class WorkoutsController < ApiController
+class WorkoutsController < ProtectedController
   before_action :set_workout, only: [:show, :update, :destroy]
 
   # GET /workouts
   def index
-    @workouts = Workout.all
+    @workouts = current_user.workouts
 
     render json: @workouts
   end
 
   # GET /workouts/1
   def show
+    return false if @workout.user != current_user
     render json: @workout
   end
 
   # POST /workouts
   def create
     @workout = Workout.new(workout_params)
+    @workout.user_id = current_user.id
 
     if @workout.save
       render json: @workout, status: :created, location: @workout
@@ -26,6 +28,7 @@ class WorkoutsController < ApiController
 
   # PATCH/PUT /workouts/1
   def update
+    return false if @workout.user != current_user
     if @workout.update(workout_params)
       render json: @workout
     else
@@ -35,6 +38,7 @@ class WorkoutsController < ApiController
 
   # DELETE /workouts/1
   def destroy
+    return false if @workout.user != current_user
     @workout.destroy
   end
 

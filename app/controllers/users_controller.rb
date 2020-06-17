@@ -1,16 +1,14 @@
-class UsersController < ApiController
+class UsersController < ProtectedController
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   def index
-    @users = User.all
-
-    render json: @users
+    render json: current_user
   end
 
   # GET /users/1
   def show
-    render json: @user
+    render json: current_user
   end
 
   # POST /users
@@ -26,6 +24,7 @@ class UsersController < ApiController
 
   # PATCH/PUT /users/1
   def update
+    return false if @user != current_user
     if @user.update(user_params)
       render json: @user
     else
@@ -35,6 +34,7 @@ class UsersController < ApiController
 
   # DELETE /users/1
   def destroy
+    return false if @user != current_user
     @user.destroy
   end
 
