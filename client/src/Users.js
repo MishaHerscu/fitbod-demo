@@ -16,28 +16,28 @@ class Users extends Component {
 
   fetch (endpoint) {
     return window.fetch(endpoint)
-      .then(response => response.json())
-      .catch(error => console.log(error))
+    .then(response => response)
+    .catch(error => console.log(error))
   }
 
   getUsers () {
     this.fetch('/api/users')
-      .then(users => {
-        if (users) {
-          if (users.length) {
-            this.setState({users: users})
-          } else {
-            this.setState({users: []})
-          }
+    .then(users => {
+      if (users) {
+        if (users.length) {
+          this.setState({users: users})
         } else {
           this.setState({users: []})
         }
-      })
+      } else {
+        this.setState({users: []})
+      }
+    })
   }
 
   getUser (id) {
     this.fetch(`/api/users/${id}`)
-      .then(user => this.setState({user: user}))
+    .then(user => this.setState({user: user}))
   }
 
   render () {

@@ -17,13 +17,14 @@ class Workouts extends Component {
 
   fetch (endpoint) {
     return window.fetch(endpoint)
-      .then(response => response.json())
-      .catch(error => console.log(error))
+    .then(response => response)
+    .catch(error => console.log(error))
   }
 
   getWorkouts () {
     this.fetch('/api/workouts')
-      .then(workouts => {
+    .then(workouts => {
+      if (workouts) {
         if (workouts.length) {
           workouts = workouts.filter((workout) => {
             return workout.user_id.toString() === this.props.match.params.userId.toString()
@@ -36,12 +37,15 @@ class Workouts extends Component {
         } else {
           this.setState({workouts: []})
         }
-      })
+      } else {
+        this.setState({workouts: []})
+      }
+    })
   }
 
   getWorkout (id) {
     this.fetch(`/api/workouts/${id}`)
-      .then(workout => this.setState({workout: workout}))
+    .then(workout => this.setState({workout: workout}))
   }
 
   render () {
