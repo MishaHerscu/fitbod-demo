@@ -3,14 +3,13 @@ class WorkoutsController < ProtectedController
 
   # GET /workouts
   def index
-    @workouts = current_user.workouts
+    @workouts = Workout.all
 
     render json: @workouts
   end
 
   # GET /workouts/1
   def show
-    return false if @workout.user != current_user
     render json: @workout
   end
 

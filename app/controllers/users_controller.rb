@@ -3,12 +3,13 @@ class UsersController < ProtectedController
 
   # GET /users
   def index
-    render json: current_user
+    @users = User.all
+    render json: @users
   end
 
   # GET /users/1
   def show
-    render json: current_user
+    render json: @user
   end
 
   # POST /users

@@ -23,8 +23,12 @@ class Users extends Component {
   getUsers () {
     this.fetch('/api/users')
       .then(users => {
-        if (users.length) {
-          this.setState({users: users})
+        if (users) {
+          if (users.length) {
+            this.setState({users: users})
+          } else {
+            this.setState({users: []})
+          }
         } else {
           this.setState({users: []})
         }
