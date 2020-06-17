@@ -25,7 +25,14 @@ class Workouts extends Component {
     this.fetch('/api/workouts')
       .then(workouts => {
         if (workouts.length) {
-          this.setState({workouts: workouts})
+          workouts = workouts.filter((workout) => {
+            return workout.user_id.toString() === this.props.match.params.userId.toString()
+          })
+          if (workouts.length) {
+            this.setState({workouts: workouts})
+          } else {
+            this.setState({workouts: []})
+          }
         } else {
           this.setState({workouts: []})
         }
