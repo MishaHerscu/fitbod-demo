@@ -19,6 +19,16 @@ ActiveAdmin.register Workout do
     column :updated_at, humanize_name: false
   end
 
+  controller do
+    def update
+      if params[:user][:password_digest].blank?
+        %w(password password_confirmation password_digest).each { |p| params[:user].delete(p) }
+      end
+
+      super
+    end
+  end
+
   action_item(:index) do
     link_to 'Upload CSV', :action => 'upload_csv'
   end
@@ -28,7 +38,7 @@ ActiveAdmin.register Workout do
   end
 
   collection_action :import_csv, :method => :post do
-    CsvDb.convert_save("user", params[:dump][:file])
+    CsvDb.convert_save("workout", params[:dump][:file])
     redirect_to :action => :index, :notice => "CSV imported successfully!"
   end
 end

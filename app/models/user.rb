@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :workouts, inverse_of: :user, dependent: :destroy
 
+  validates :first_name, length: { in: 1..100, message: 'first_name length must be between 1 and 100 inclusive' }
+  validates :last_name, length: { in: 1..100, message: 'last_name length must be between 1 and 100 inclusive' }
   validates :email, length: { in: 3..1000, message: 'email length must be between 3 and 1000 inclusive' }
 
   validates_uniqueness_of :email
