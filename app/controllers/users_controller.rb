@@ -5,7 +5,7 @@ class UsersController < ProtectedController
   # GET /users
   def index
     @users = User.all
-    puts '@users: ', @users
+
     render json: @users
   end
 
