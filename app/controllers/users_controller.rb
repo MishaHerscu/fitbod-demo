@@ -1,9 +1,11 @@
 class UsersController < ProtectedController
   before_action :set_user, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show, :create]
 
   # GET /users
   def index
     @users = User.all
+    puts '@users: ', @users
     render json: @users
   end
 
