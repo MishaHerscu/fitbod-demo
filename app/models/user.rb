@@ -11,4 +11,8 @@ class User < ApplicationRecord
   validates :email, length: { in: 3..1000, message: 'email length must be between 3 and 1000 inclusive' }
 
   validates_uniqueness_of :email
+
+  def to_s
+    self.first_name + ' ' + self.last_name
+  end
 end

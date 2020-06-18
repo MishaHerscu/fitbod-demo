@@ -1,5 +1,6 @@
 class WorkoutsController < ProtectedController
   before_action :set_workout, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   # GET /workouts
   def index
@@ -49,6 +50,6 @@ class WorkoutsController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def workout_params
-      params.require(:workout).permit(:user_id, :date, :duration)
+      params.require(:workout).permit(:id, :user_id, :date, :duration)
     end
 end

@@ -24,6 +24,7 @@ class User extends Component {
   getWorkouts () {
     this.fetch('/api/workouts')
     .then(workouts => {
+      console.log('here: ', workouts)
       if (workouts) {
         if (workouts.length) {
           workouts = workouts.filter((workout) => {
