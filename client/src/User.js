@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider, List } from 'semantic-ui-react'
 
-class Workouts extends Component {
+class User extends Component {
 
   constructor () {
     super()
@@ -82,4 +82,4 @@ class Workouts extends Component {
   }
 }
 
-export default Workouts
+export default User

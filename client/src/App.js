@@ -1,17 +1,17 @@
 import React, { Component }                        from 'react'
 import { BrowserRouter as Router, Route, Switch }  from 'react-router-dom'
-import Users                                       from './Users'
-import Workouts                                    from './Workouts'
+import Home                                        from './Home'
+import User                                        from './User'
 import NotFound                                    from './NotFound'
 
 class App extends Component {
   render () {
     return <Router>
       <Switch>
-        <Route exact path='/'                  component={Users} />
-        <Route exact path='/users'             component={Users} />
-        <Route exact path="/workouts/:userId"  component={Workouts} />
-        <Route                                 component={NotFound} />
+        <Route exact path='/'               component={Home} />
+        <Route exact path='/home'           component={Home} />
+        <Route exact path="/user/:userId"   component={User} />
+        <Route                              component={NotFound} />
       </Switch>
     </Router>
   }

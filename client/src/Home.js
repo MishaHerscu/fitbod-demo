@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider, List } from 'semantic-ui-react'
 
-class Users extends Component {
+class Home extends Component {
   constructor () {
     super()
     this.state = {}
@@ -54,7 +54,7 @@ class Users extends Component {
 
           <Container textAlign='center'>
             { users && users.length
-              ? users.map((user, i) => <List.Item key={user.id}><Link to={'/workouts/' + user.id}>{user.email}</Link></List.Item>)
+              ? users.map((user, i) => <List.Item key={user.id}><Link to={'/user/' + user.id}>{user.email}</Link></List.Item>)
               : 'No users found.'
             }
           </Container>
@@ -68,4 +68,4 @@ class Users extends Component {
   }
 }
 
-export default Users
+export default Home
