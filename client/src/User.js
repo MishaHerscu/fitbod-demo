@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider, List } from 'semantic-ui-react'
+import { Container, Header, Button, Icon, Dimmer, Loader, Divider, List } from 'semantic-ui-react'
 
 class User extends Component {
 
@@ -17,7 +17,7 @@ class User extends Component {
 
   fetch (endpoint) {
     return window.fetch(endpoint)
-    .then(response => response)
+    .then(response => response.json())
     .catch(error => console.log(error))
   }
 
