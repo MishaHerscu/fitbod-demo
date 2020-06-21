@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Header, Button, Icon, Dimmer, Loader, Divider, List } from 'semantic-ui-react'
+import { Container, Header, Icon, Dimmer, Loader, Divider, List } from 'semantic-ui-react'
+import Nav from './Nav'
 
 class Home extends Component {
   constructor () {
@@ -42,8 +43,8 @@ class Home extends Component {
 
   render () {
     let {users} = this.state
-    return users
-      ? <Container text>
+    return [<Nav />, users
+      ? <Container>
 
           <Header as='h2' icon textAlign='center' color='teal'>
             <Icon name='unordered list' circular />
@@ -61,10 +62,12 @@ class Home extends Component {
 
         </Container>
       : <Container text>
+
           <Dimmer active inverted>
             <Loader content='Loading' />
           </Dimmer>
-        </Container>
+
+        </Container>]
   }
 }
 

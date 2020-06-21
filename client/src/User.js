@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Header, Button, Icon, Dimmer, Loader, Divider, List } from 'semantic-ui-react'
+import Nav from './Nav'
 
 class User extends Component {
 
@@ -51,8 +52,8 @@ class User extends Component {
 
   render () {
     let {workouts} = this.state
-    return workouts
-      ? <Container text>
+    return [<Nav />, workouts
+      ? <Container>
 
           <Header as='h2' icon textAlign='center' color='teal'>
             <Icon name='unordered list' circular />
@@ -76,10 +77,12 @@ class User extends Component {
 
         </Container>
       : <Container text>
+
           <Dimmer active inverted>
             <Loader content='Loading' />
           </Dimmer>
-        </Container>
+
+        </Container>]
   }
 }
 
