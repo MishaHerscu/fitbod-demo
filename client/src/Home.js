@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Header, Icon, Dimmer, Loader, Divider, List } from 'semantic-ui-react'
+import { Container, Header, Dimmer, Loader, Divider, List } from 'semantic-ui-react'
 import Nav from './Nav'
 
 class Home extends Component {
@@ -44,18 +44,17 @@ class Home extends Component {
   render () {
     let {users} = this.state
     return [<Nav />, users
-      ? <Container>
+      ? <Container style={{padding: '0px 0px 0px 5px'}}>
 
-          <Header as='h2' icon textAlign='center' color='teal'>
-            <Icon name='unordered list' circular />
+          <Header as='h2' icon style={{textAlign: 'left', color: '#FF6E60'}}>
             <Header.Content>All Users</Header.Content>
           </Header>
 
           <Divider hidden section />
 
-          <Container textAlign='center'>
+          <Container textAlign='left'>
             { users && users.length
-              ? users.map((user, i) => <List.Item key={user.id}><Link to={'/user/' + user.id}>{user.email}</Link></List.Item>)
+              ? users.map((user, i) => <List.Item key={user.id}><Link to={'/user/' + user.id}>{user.first_name} {user.last_name}</Link></List.Item>)
               : 'No users found.'
             }
           </Container>

@@ -5,6 +5,35 @@ import User                                        from './User'
 import NotFound                                    from './NotFound'
 
 class App extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      currentUser: null
+    }
+    this.updateCurrentUser = this.updateCurrentUser.bind(this);
+  }
+
+  componentDidMount(){
+    let that = this
+    fetch('/api/users/check_for_user', {})
+    .then(function(response){
+      if(response.data){
+        if(response.data.email){ that.setState({ currentUser: response.data.email }) }
+        else { that.setState({ currentUser: null }) }
+      } else { that.setState({ currentUser: null }) }
+    })
+    .catch(function(error){
+      console.error(error)
+    })
+  }
+
+  updateCurrentUser(email) {
+    this.setState({
+      currentUser: email
+    })
+  }
+
   render () {
     return <Router>
       <Switch>

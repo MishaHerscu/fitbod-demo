@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Header, Button, Icon, Dimmer, Loader, Divider, List } from 'semantic-ui-react'
+import { Container, Header, Button, Dimmer, Loader, Divider, List } from 'semantic-ui-react'
 import Nav from './Nav'
 
 class User extends Component {
@@ -53,16 +53,15 @@ class User extends Component {
   render () {
     let {workouts} = this.state
     return [<Nav />, workouts
-      ? <Container>
+      ? <Container style={{padding: '0px 0px 0px 5px'}}>
 
-          <Header as='h2' icon textAlign='center' color='teal'>
-            <Icon name='unordered list' circular />
+          <Header as='h2' icon style={{textAlign: 'left', color: '#FF6E60'}}>
             <Header.Content>Workouts for User {this.props.match.params.userId}</Header.Content>
           </Header>
 
           <Divider hidden section />
 
-          <Container textAlign='center'>
+          <Container textAlign='left'>
             { workouts && workouts.length
               ? workouts.map((workout, i) => <List.Item key={i}>{workout.duration} minutes on {workout.date}</List.Item>)
               : 'No workouts found.'
@@ -71,7 +70,7 @@ class User extends Component {
 
           <Divider hidden section />
 
-          <Container textAlign='center'>
+          <Container textAlign='left'>
             <Button as={Link} to='/'>Back</Button>
           </Container>
 
