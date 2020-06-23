@@ -30,6 +30,11 @@ constructor() {
   this.handleSubmit = this.handleSubmit.bind(this)
 }
 
+fetch (endpoint) {
+  return window.fetch(endpoint)
+  .catch(error => console.error(error))
+}
+
 handleFirstNameChange(event) {
   this.setState({first_name: event.target.value})
 }
@@ -52,7 +57,29 @@ handlePasswordConfirmationChange(event) {
 
 handleSubmit(event) {
   event.preventDefault()
-  console.log(this.state)
+  const first_name = this.state.first_name
+  const last_name = this.state.last_name
+  const email = this.state.email
+  const password = this.state.password
+  const password_confirmation = this.state.password.password_confirmation
+  const data = {
+                  user: {
+                          first_name: first_name,
+                          last_name: last_name,
+                          email: email,
+                          password: password,
+                          password_confirmation: password_confirmation
+                        }
+               }
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(data)
+  };
+  this.fetch('/users/sign_up', requestOptions)
+  .then(resultData => this.setState({ resultData: resultData }))
+  .then(() => console.log(this.state))
+  .catch(error => console.error(error))
 }
 
 render () {
