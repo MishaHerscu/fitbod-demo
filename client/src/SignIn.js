@@ -17,11 +17,17 @@ class SignIn extends Component {
     super()
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      resultData: null
     }
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  fetch (endpoint) {
+    return window.fetch(endpoint)
+    .catch(error => console.error(error))
   }
 
   handleEmailChange(event) {
@@ -34,7 +40,18 @@ class SignIn extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    console.log(this.state)
+    const email = this.state.email
+    const password = this.state.password
+    const data = { user: { email: email, password: password } }
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    };
+    this.fetch('/users/sign_in', requestOptions)
+    .then(resultData => this.setState({ resultData: resultData }))
+    .then(() => console.log(this.state))
+    .catch(error => console.error(error))
   }
 
   render () {
@@ -59,7 +76,7 @@ class SignIn extends Component {
       },
     }))
 
-    return ([<Nav />,<Container component="main" maxWidth="xs">
+    return ([<Nav key="nav" />,<Container component="main" maxWidth="xs" key="container">
         <CssBaseline />
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">

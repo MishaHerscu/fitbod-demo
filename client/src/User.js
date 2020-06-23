@@ -71,8 +71,8 @@ class User extends Component {
 
   render () {
     let {workouts} = this.state
-    return [<Nav />, workouts
-      ? <Container style={{padding: '0px 0px 0px 5px'}}>
+    return [<Nav key="nav" />, workouts
+      ? <Container style={{padding: '0px 0px 0px 5px'}} key="container">
 
           <Header as='h2' icon style={{textAlign: 'left', color: '#FF6E60'}}>
             <Header.Content>{this.state.displayName}</Header.Content>
@@ -108,7 +108,7 @@ class User extends Component {
           </Container>
 
         </Container>
-      : <Container text>
+      : <Container text key="container">
 
           <Dimmer active inverted>
             <Loader content='Loading' />

@@ -77,7 +77,7 @@ render () {
     },
   }))
 
-  return ([<Nav />,<Container component="main" maxWidth="xs">
+  return ([<Nav key="nav" />,<Container component="main" maxWidth="xs" key="container">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
