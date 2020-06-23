@@ -103,7 +103,7 @@ class SignIn extends Component {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Sign in
             </Button>
             <Grid container style={{paddingTop: '5px'}}>
               <Grid item xs>

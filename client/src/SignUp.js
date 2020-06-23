@@ -81,7 +81,7 @@ render () {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Sign in
+          Sign up
         </Typography>
         <form className={classes.form} noValidate onSubmit={this.handleSubmit}>
           <TextField
@@ -154,7 +154,7 @@ render () {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Sign up
           </Button>
         </form>
       </div>
