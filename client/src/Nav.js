@@ -5,14 +5,15 @@ import { Menu } from 'semantic-ui-react'
 class Nav extends Component {
   constructor () {
     super()
-    this.state = {}
   }
 
   render () {
-    return <Menu secondary style={{padding: '0px 0px 30px 41px'}}>
-      <Menu.Item>
-        <Link to='/users/sign_in'>Sign in</Link>
-      </Menu.Item>
+    return <Menu secondary style={{margin: '0px 41px 30px 41px'}}>
+      <Menu.Item><Link to='/'>View users</Link></Menu.Item>
+      <Menu.Menu position='right'>
+        <Menu.Item position='right'><Link to='/users/sign_in'>Sign in</Link></Menu.Item>
+        <Menu.Item position='right'><Link to='/users/sign_up'>Sign up</Link></Menu.Item>
+      </Menu.Menu>
     </Menu>
   }
 }

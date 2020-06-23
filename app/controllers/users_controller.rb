@@ -1,5 +1,5 @@
 class UsersController < ProtectedController
-  before_action :set_user, only: [:show, :check_for_user, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show, :create]
 
   # GET /users
@@ -12,11 +12,6 @@ class UsersController < ProtectedController
   # GET /users/1
   def show
     render json: @user
-  end
-
-  def check_for_user
-    @user_info = current_user ? current_user : nil
-    render json: @user_info
   end
 
   # POST /users

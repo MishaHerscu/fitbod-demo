@@ -42,5 +42,18 @@ module FitbodDemo
     config.middleware.use ActionDispatch::Flash
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
+
+    # Cross-Origin Resource Sharing
+    config.middleware.insert_before 0, Rack::Cors, debug: true, logger: (-> { Rails.logger }) do
+      allow do
+        origins ENV['CLIENT_BASE_URL'].chomp('/')
+
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :delete, :put, :patch, :options, :head],
+          credentials: true,
+          max_age: 0
+      end
+    end
   end
 end
